@@ -5,7 +5,8 @@ import math
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import muellerCalculus as mc
+
+import jmstokes as mc
 
 polh0 = np.matrix([[1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]) / \
     2.  # Mueller matrix of polarizer with transmission axis horizontal
