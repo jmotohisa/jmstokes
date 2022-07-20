@@ -1,1 +1,6 @@
 __pycache__/
+build/
+dist/
+jmstokes.egg-info/
+src/jmstokes.egg-info/
+src/jmstokes/version.py
