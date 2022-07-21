@@ -41,26 +41,26 @@ def CalcStokesParams(w1, w2, w3, w4, w5, w6, theta_pol=0, fnorm=False):
     return s0, s1, s2, s3
 
 
-def ShowStokesParams2D(s0, s1, s2, s3):
+def ShowStokesParams2D(s0, s1, s2, s3, X, Y):
     """
     Display Stokes parameters for 2D matrix
     """
 
-    fig, axs = plt.subplots(4, 1)
+    fig, axs = plt.subplots(2, 2)
 
-    ax1 = axs[0]
+    ax1 = axs[0, 0]
     pcm1 = ax1.pcolor(X, Y, s0, cmap='hsv', shading='auto')
     fig.colorbar(pcm1, ax=ax1, orientation="vertical")
 
-    ax2 = axs[1]
+    ax2 = axs[0, 1]
     pcm2 = ax2.pcolor(X, Y, s1, cmap='hsv', shading='auto')
     fig.colorbar(pcm2, ax=ax2, orientation="vertical")
 
-    ax3 = axs[2]
+    ax3 = axs[1, 0]
     pcm3 = ax3.pcolor(X, Y, s2, cmap='hsv', shading='auto')
     fig.colorbar(pcm3, ax=ax3, orientation="vertical")
 
-    ax4 = axs[3]
+    ax4 = axs[1, 1]
     pcm4 = ax4.pcolor(X, Y, s3, cmap='hsv', shading='auto')
     fig.colorbar(pcm4, ax=ax4, orientation="vertical")
 
@@ -81,7 +81,7 @@ def SfromExEy(Ex, Ey, fnorm=False):
     s0 = Ex**2+Ey**2
     s1 = Ex**2-Ey**2
     s2 = 2*Ex*Ey
-    s3 = 0
+    s3 = np.zeros(s0.shape)
 
     if(fnorm):
         s1 /= s0
@@ -177,7 +177,7 @@ def MMHWP(theta):
     return mm
 
 
-def MulMMSP(mm, s0, s1, s2, s3):
+def MulMMSP(m, s0, s1, s2, s3):
     """
     product of Mueller matrix and Stokes parameters (consisting of 4 waves)
     (for product of Mueller matrix, use MatrixMultiply and copy M_product to desired wave)
